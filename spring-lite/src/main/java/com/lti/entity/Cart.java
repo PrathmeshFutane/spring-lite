@@ -8,12 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "thursday15_cart")
+@Table(name = "thursday15_cart2")
 public class Cart {
 
 	@Id
@@ -21,13 +22,18 @@ public class Cart {
 	@Column(name = "cart_id")
 	private int cartId;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="customer_id")
+//	@ManyToOne
+//	@JoinColumn(name="customer_id")
+//	private Customer customer;
+	
+//	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+//	private List<CartItem> cartItems;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-	private List<CartItem> cartItems;
-
 	
 	public int getCartId() {
 		return cartId;
@@ -44,13 +50,6 @@ public class Cart {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
-	public List<CartItem> getCartItems() {
-		return cartItems;
-	}
-
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
-	}	
+	
 	
 }

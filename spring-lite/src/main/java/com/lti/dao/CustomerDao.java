@@ -9,20 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lti.entity.Register;
+import com.lti.entity.Customer;
 
 @Component
-public class RegisterDao {
+public class CustomerDao {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Transactional
-	public void save(Register register) {
+	public void save(Customer register) {
 		entityManager.merge(register);
 	}
 	
-	public List<Register> fetch(){
-		return entityManager.createQuery("select r from Register r").getResultList(); 
+	public Customer fetch(int id) {
+		return entityManager.find(Customer.class, id);
+	}
+	
+	public List<Customer> displayAllCustomer(){
+		return entityManager.createQuery("select c from Customer c").getResultList(); 
 	}
 }

@@ -16,11 +16,6 @@ public class ProductDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	@Transactional
-	public void save(Product product) {
-		entityManager.merge(product);
-	}
-	
 	public Product fetch(int id) {
 		return entityManager.find(Product.class, id);
 	}

@@ -1,14 +1,17 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tuesday_practice")
-public class Register {
+@Table(name = "thursday15_customer")
+public class Customer {
 
 	@Id
 	@GeneratedValue
@@ -19,6 +22,11 @@ public class Register {
 	private String address1;
 	private String address2;
 	private String college;
+	
+//	@OneToOne(mappedBy = "customer")	
+//	@JoinColumn(name = "cart_id")
+//	private Cart cart;
+	
 	public int getRegisterId() {
 		return registerId;
 	}
@@ -49,6 +57,9 @@ public class Register {
 	public void setCollege(String college) {
 		this.college = college;
 	}
+
+	
+	
 	
 	
 }
